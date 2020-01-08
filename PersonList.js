@@ -1,10 +1,10 @@
 import React from 'react';
-
 import axios from 'axios';
 
 export default class PersonList extends React.Component {
   state = {
-    persons: []
+    persons: [],
+    id:0
   }
 
   componentDidMount() {
@@ -20,8 +20,8 @@ export default class PersonList extends React.Component {
       .then(res => {
         const persons = res.data;
         console.log(res.data)
-        // this.setState({ persons });
       })
+
   }
 
   render() {
