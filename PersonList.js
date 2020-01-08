@@ -15,10 +15,19 @@ export default class PersonList extends React.Component {
       })
   }
 
+  delete=(event)=> {
+    axios.delete(`https://jsonplaceholder.typicode.com/users/${event.target.id}`)
+      .then(res => {
+        const persons = res.data;
+        console.log(res.data)
+        // this.setState({ persons });
+      })
+  }
+
   render() {
     return (
       <ul>
-        { this.state.persons.map(person => <li key={person.id}>{person.name}</li>)}
+        { this.state.persons.map(person => <li id={person.id} onClick={this.delete} key={person.id}>{person.name}</li>)}
       </ul>
     )
   }
