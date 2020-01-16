@@ -1,3 +1,21 @@
 h1, p {
   font-family: Lato;
 }
+
+ul li {
+  position: relative;
+  background-color: bisque;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
