@@ -14,11 +14,12 @@ export default class PersonList extends React.Component {
     });
   }
 
-  deletePerson = (event) => {
+  deletePerson = event => {
     var id = event.target.id;
     axios
       .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(res => {
+        console.log(res);
         this.setState({
           persons: this.state.persons.filter(person => {
             return person.id !== Number(id);
