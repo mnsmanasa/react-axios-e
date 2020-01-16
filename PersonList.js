@@ -28,19 +28,22 @@ class PersonList extends React.Component {
   };
 
   render() {
-    const items = this.state.persons.map(person => {
-      <li key={person.id}>
-        {person.name}
-        <span className="delete-btn" id={person.id} onClick={this.deletePerson}>
-          X
-        </span>
-      </li>;
-    });
     return (
-      <ul>        
-          {items}        
+      <ul>
+        {this.state.persons.map(person => {
+          <li key={person.id}>
+            {person.name}
+            <span
+              className="delete-btn"
+              id={person.id}
+              onClick={this.deletePerson}
+            >
+              X
+            </span>
+          </li>;
+        })}
       </ul>
-    )
+    );
   }
 }
 
