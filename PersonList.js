@@ -19,7 +19,6 @@ export default class PersonList extends React.Component {
     axios
       .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(res => {
-        console.log(res);
         this.setState({
           persons: this.state.persons.filter(person => {
             return person.id !== Number(id);
