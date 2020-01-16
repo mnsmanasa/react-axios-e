@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { CSSTransitionGroup } from 'react-transition-group';
 
-export default class PersonList extends React.Component {
+class PersonList extends React.Component {
   state = {
     persons: [],
     id: 0
@@ -28,14 +29,26 @@ export default class PersonList extends React.Component {
   };
 
   render() {
+    const items = this.state.persons.map(person => {
+      <li key={person.id}>
+        {person.name}
+        <span className="delete-btn" id={person.id} onClick={this.deletePerson}>
+          X
+        </span>
+      </li>;
+    });
+      // <CSSTransitionGroup
+        //   transitionName="example"
+        //   transitionEnterTimeout={500}
+        //   transitionLeaveTimeout={300}
+        // >
+        // </CSSTransitionGroup>
     return (
-      <ul>
-        {this.state.persons.map(person => (
-          <li key={person.id}>
-            {person.name} <span className='delete-btn' id={person.id} onClick={this.deletePerson}>X</span>
-          </li>
-        ))}
+      <ul>        
+          {items}        
       </ul>
-    );
+    )
   }
 }
+
+export default PersonList;
