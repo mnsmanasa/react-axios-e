@@ -34,7 +34,7 @@ export default class PersonList extends React.Component {
       <ul>
         {this.state.persons.map(person => (
           <li key={person.id}>
-            {person.name}{" "}
+            {person.name}
             <span
               className="delete-btn"
               id={person.id}
