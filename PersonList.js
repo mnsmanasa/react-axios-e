@@ -8,7 +8,7 @@ export default class PersonList extends React.Component {
   };
 
   componentDidMount() {
-    this.getUsers()
+    this.getUsers();
   }
 
   getUsers() {
@@ -21,14 +21,11 @@ export default class PersonList extends React.Component {
   deletePerson = event => {
     var id = Number(event.target.id);
     axios
-      .delete("https://jsonplaceholder.typicode.com/users", {params: {"id": Number(event.target.id)}})
+      .delete(`https://jsonplaceholder.typicode.com/users`, {
+        params: { id : id }
+      })
       .then(res => {
-        console.log(res.data)
-        // this.setState({
-        //   persons: this.state.persons.filter(person => {
-        //     return person.id !== Number(id);
-        //   })
-        // });
+        console.log(res.data);
       });
   };
 
@@ -37,7 +34,14 @@ export default class PersonList extends React.Component {
       <ul>
         {this.state.persons.map(person => (
           <li key={person.id}>
-            {person.name} <span className='delete-btn' id={person.id} onClick={this.deletePerson}>X</span>
+            {person.name}{" "}
+            <span
+              className="delete-btn"
+              id={person.id}
+              onClick={this.deletePerson}
+            >
+              X
+            </span>
           </li>
         ))}
       </ul>
