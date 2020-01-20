@@ -7,7 +7,7 @@ class PersonList extends React.Component {
     id: 0
   };
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
       const persons = res.data;
       this.setState({ persons });
