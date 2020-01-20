@@ -20,12 +20,13 @@ export default class PersonList extends React.Component {
 
   deletePerson = event => {
     var id = Number(event.target.id);
+    console.log(id);
     axios
       .delete(`https://jsonplaceholder.typicode.com/users`, {
-        params: { id : id }
+        params: { id: id }
       })
       .then(res => {
-        console.log(res.data);
+        console.log(res, "yggi");
       });
   };
 
