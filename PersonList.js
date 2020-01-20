@@ -8,6 +8,10 @@ export default class PersonList extends React.Component {
   };
 
   componentDidMount() {
+    this.getUsers()
+  }
+
+  getUsers() {
     axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
       const persons = res.data;
       this.setState({ persons });
@@ -15,15 +19,16 @@ export default class PersonList extends React.Component {
   }
 
   deletePerson = event => {
-    var id = event.target.id;
+    var id = Number(event.target.id);
     axios
-      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .delete("https://jsonplaceholder.typicode.com/users", {params: {"id": Number(event.target.id)}})
       .then(res => {
-        this.setState({
-          persons: this.state.persons.filter(person => {
-            return person.id !== Number(id);
-          })
-        });
+        console.log(res.data)
+        // this.setState({
+        //   persons: this.state.persons.filter(person => {
+        //     return person.id !== Number(id);
+        //   })
+        // });
       });
   };
 
