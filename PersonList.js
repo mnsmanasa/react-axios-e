@@ -2,16 +2,11 @@ import React from "react";
 import axios from "axios";
 
 class PersonList extends React.Component {
-  state = {
-    persons: [],
-    id: 0
-  };
-
-  UNSAFE_componentWillMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
-      const persons = res.data;
-      this.setState({ persons });
-    });
+  constructor() {
+    super();
+    this.state = {
+      persons: []
+    };
   }
 
   deletePerson = event => {
@@ -19,15 +14,25 @@ class PersonList extends React.Component {
     axios
       .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(res => {
-        this.setState({
-          persons: this.state.persons.filter(person => {
-            return person.id !== Number(id);
-          })
-        });
+        console.log(res);
+        // this.setState({
+        //   persons: this.state.persons.filter(person => {
+        //     return person.id !== Number(id);
+        //   })
+        // });
       });
   };
 
+  UNSAFE_componentWillMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
+      const persons = res.data;
+      console.log(persons);
+      this.setState({ persons: persons });
+    });
+  }
+
   render() {
+    console.log(this.state.persons, "render");
     return (
       <ul>
         {this.state.persons.map(person => {
