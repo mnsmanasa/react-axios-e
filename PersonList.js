@@ -10,17 +10,7 @@ class PersonList extends React.Component {
     };
   }
 
-  componentDidMount() {
-  }
-
-  deletePerson = event => {
-   
-  };
-
-  render() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
-      console.log(res.data)
-    });
+  render() {   
     return (
       <div>jgj</div>
     );
